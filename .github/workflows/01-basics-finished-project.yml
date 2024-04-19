@@ -2,7 +2,20 @@ name: Test & Deploy 01 Basics finished Project
 # on: [push, workflow_dispatch]
 on: [workflow_dispatch]
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Lint
+        run: npm run lint
+        working-directory: 01-basics/03-finished-project
   test:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Get code
