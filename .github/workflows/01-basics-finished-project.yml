@@ -1,4 +1,4 @@
-name: Deploy 01 Basics finished Project
+name: Test & Deploy 01 Basics finished Project
 on: [push, workflow_dispatch]
 jobs:
   test:
