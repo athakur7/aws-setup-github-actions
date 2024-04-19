@@ -6,8 +6,6 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      # - name: Change directory
-      #   run: cd 01-basics/02-starting-project
       - name: Install NodeJS
         uses: actions/setup-node@v4
         with:
