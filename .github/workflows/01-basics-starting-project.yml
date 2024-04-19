@@ -1,5 +1,5 @@
 name: Test 02-starting-project
-on: push
+on: workflow_dispatch
 jobs:
   run-test-cases:
     runs-on: ubuntu-latest
