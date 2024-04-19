@@ -12,8 +12,10 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
+        working-directory: 01-basics/03-finished-project
       - name: Run tests
         run: npm test
+        working-directory: 01-basics/03-finished-project
   deploy:
     needs: test
     runs-on: ubuntu-latest
