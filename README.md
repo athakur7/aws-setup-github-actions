@@ -1,1 +1,1 @@
-# aws-setup-github-actions
+# github-actions
