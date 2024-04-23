@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist-files
-          path: dist
+          path: 03-artifacts-and-outputs/03-artifacts-project/dist/
           # path: |
           #   dist
           #   package.json
