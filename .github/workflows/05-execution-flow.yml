@@ -19,10 +19,10 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
-        working-directory: $PROJECT_DIR
+        working-directory: ${{ env.PROJECT_DIR }}
       - name: Lint code
         run: npm run lint
-        working-directory: $PROJECT_DIR
+        working-directory: ${{ env.PROJECT_DIR }}
   test:
     runs-on: ubuntu-latest
     steps:
@@ -36,18 +36,18 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
-        working-directory: $PROJECT_DIR
+        working-directory: ${{ env.PROJECT_DIR }}
       - name: Test code
         id: run-tests
         run: npm run test
-        working-directory: $PROJECT_DIR
+        working-directory: ${{ env.PROJECT_DIR }}
       - name: Upload test report
       # IF condition 
         # if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-report
-          path: $PROJECT_DIR/test.json
+          path: ${{ env.PROJECT_DIR }}/test.json
   build:
     needs: test
     runs-on: ubuntu-latest
@@ -62,16 +62,16 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
-        working-directory: $PROJECT_DIR
+        working-directory: ${{ env.PROJECT_DIR }}
       - name: Build website
         id: build-website
         run: npm run build
-        working-directory: $PROJECT_DIR
+        working-directory: ${{ env.PROJECT_DIR }}
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist-files
-          path: $PROJECT_DIR/dist/
+          path: ${{ env.PROJECT_DIR }}/dist/
   deploy:
     needs: build
     runs-on: ubuntu-latest
