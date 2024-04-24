@@ -1,0 +1,16 @@
+name: Reusable deploy
+on: workflow_call
+#   push:
+#     branches:
+#       - main
+env:
+  PROJECT_DIR: 05-exec-flow/05-exec-flow-project
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Information
+        run: echo "Deploying...."
+        
+
+     
