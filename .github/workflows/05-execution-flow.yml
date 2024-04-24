@@ -1,4 +1,4 @@
-name: Website Deployment
+name: Website Deployment exec flow
 on:
   push:
     branches:
@@ -82,3 +82,11 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  report:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output info
+        run: |
+          echo "Something went wrong"
+          echo "${{ github}}"
