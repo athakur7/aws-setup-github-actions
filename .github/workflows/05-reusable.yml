@@ -6,10 +6,11 @@ on:
         description: The name of the deployable artifact files
         required: false
         default: dist
-        type: string 
-#   push:
-#     branches:
-#       - main
+        type: string
+# if secrets required for this workflow
+    # secrets:
+    #   some-secret:
+    #     required: false
 env:
   PROJECT_DIR: 05-exec-flow/05-exec-flow-project
 jobs:
