@@ -7,6 +7,7 @@ env:
   PROJECT_DIR: 05-exec-flow/05-exec-flow-project
 jobs:
   build:
+    continue-on-error: true
     strategy:
       matrix:
         node-version: [12,14,16]
