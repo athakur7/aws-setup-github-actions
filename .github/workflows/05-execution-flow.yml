@@ -41,7 +41,7 @@ jobs:
         working-directory: 05-exec-flow/05-exec-flow-project
       - name: Upload test report
       # IF condition 
-        if: steps.run-tests.outcome == 'failure'
+        if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-report
