@@ -1,0 +1,28 @@
+name: Matrix
+on:
+  push:
+    branches:
+      - main
+env:
+  PROJECT_DIR: 05-exec-flow/05-exec-flow-project
+jobs:
+  build:
+    strategy:
+      matrix:
+        node-version: [12,14,16]
+        operating-system: [ubuntu-latest,ubuntu-20.04]
+    runs-on: ${{ matrix.operating-system}}
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version}}
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ${{ env.PROJECT_DIR }}
+      - name: Build code
+        run: npm run build
+        working-directory: ${{ env.PROJECT_DIR }}
+  
