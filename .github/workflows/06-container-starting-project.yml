@@ -1,9 +1,9 @@
 name: Deploying container starting Project
 on:
-  push:
-    branches:
-      - main
-      - dev
+  # push:
+  #   branches:
+  #     - main
+  #     - dev
   workflow_dispatch: 
 env:
   PROJECT_DIR: 06-containers/06-container-starting-project
