@@ -15,9 +15,9 @@ runs:
       id: validate
       run: |
         if [ -d "${{ inputs.project-path }}" ]; then
-          echo "::set-output name=project-path-validity::true"
+          echo "project-path-validity=true" >> $GITHUB_OUTPUT
         else
-          echo "::set-output name=project-path-validity::false"
+          echo "project-path-validity=false" >> $GITHUB_OUTPUT
           echo "Error: Provided project-path '${{ inputs.project-path }}' is not valid or does not exist."
           exit 1
         fi
