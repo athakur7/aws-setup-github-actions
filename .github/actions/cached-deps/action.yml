@@ -19,7 +19,7 @@ runs:
         else
           echo "project-path-validity=false" >> $GITHUB_OUTPUT
           echo "Error: Provided project-path '${{ inputs.project-path }}' is not valid or does not exist."
-          echo "Your Present working directory is (PWD): $(pwd)"
+          echo "Your Present working directory is : $(pwd)"
           exit 1
         fi
       shell: bash
