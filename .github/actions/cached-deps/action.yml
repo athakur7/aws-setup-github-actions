@@ -1,18 +1,27 @@
 name: 'Get & Cached dependencies'
 description: 'Get the dependencies via npm & cache them'
+inputs:
+  caching:
+    description: 'Whether to cache dpendencies or not'
+    required: false
+    default: 'true'
+  project-path:
+    description: 'Add project path for which caching is to be done'
+    required: false
 env:
   PROJECT_DIR: 07-custom-actions/07-custom-starting-project
 runs:
   using: 'composite'
   steps:
     - name: Cache dependencies
+      if: inputs.caching == 'true' 
       id: cache
       uses: actions/cache@v4
       with:
         path: ${{ env.PROJECT_DIR }}/node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
       run: npm ci
       shell: bash
       working-directory: ${{ env.PROJECT_DIR }}
