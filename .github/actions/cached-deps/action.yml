@@ -8,6 +8,10 @@ inputs:
   project-path:
     description: 'Add project path for which caching is to be done'
     required: true
+# outputs:
+#   project-path-check:
+#     description: 'Validate Project Path'
+#     value: ${{ steps.validate.outputs.project-path-validity }}
 runs:
   using: 'composite'
   steps:
@@ -15,11 +19,11 @@ runs:
       id: validate
       run: |
         if [ -d "${{ inputs.project-path }}" ]; then
-          echo "project-path-validity=true" >> $GITHUB_OUTPUT
+          echo "::set-output name=project-path-validity::true"
         else
-          echo "project-path-validity=false" >> $GITHUB_OUTPUT
+          echo "::set-output name=project-path-validity::false"
           echo "Error: Provided project-path '${{ inputs.project-path }}' is not valid or does not exist."
-          echo "Your Present working directory is : $(pwd)"
+          echo "Present working directory (PWD): $(pwd)"
           exit 1
         fi
       shell: bash
