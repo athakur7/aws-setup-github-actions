@@ -5,7 +5,7 @@ on:
       - main
   workflow_dispatch: 
 env:
-  PROJECT_DIR: 07-custom-actions/07-custom-starting-project
+  PROJECT_DIR: 0711-custom-actions/07-custom-starting-project
 jobs:
   lint:
     runs-on: ubuntu-latest
