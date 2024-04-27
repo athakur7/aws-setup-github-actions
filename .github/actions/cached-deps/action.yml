@@ -10,8 +10,6 @@ inputs:
     required: true
 runs:
   using: 'composite'
-  outputs:
-    project-path-validity: ${{ steps.validate.outputs.project-path-validity }}
   steps:
     - name: Validate project path
       id: validate
@@ -27,7 +25,6 @@ runs:
     - name: Cache dependencies
       if: inputs.caching == 'true' 
       id: cache
-      
       uses: actions/cache@v4
       with:
         path: ${{ inputs.project-path }}/node_modules
