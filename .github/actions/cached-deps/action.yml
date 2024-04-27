@@ -11,7 +11,7 @@ inputs:
 outputs:
   project-path-check:
     description: 'Validate Project Path'
-    value: ${{ steps.validate.outputs.project-path-validity }}
+    value: ${{ steps.validate.outputs.project-path }}
 runs:
   using: 'composite'
   steps:
