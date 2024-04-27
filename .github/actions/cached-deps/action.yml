@@ -1,5 +1,5 @@
-name: 'Get & Cached dependencies'
-description: 'Get the dependencies via npm & cache them'
+name: 'Cached dependencies'
+description: 'Get the dependencies via npm & cache if not present then install'
 inputs:
   caching:
     description: 'Whether to cache dpendencies or not'
@@ -10,10 +10,24 @@ inputs:
     required: true
 runs:
   using: 'composite'
+  outputs:
+    project-path-validity: ${{ steps.validate.outputs.project-path-validity }}
   steps:
+    - name: Validate project path
+      id: validate
+      run: |
+        if [ -d "${{ inputs.project-path }}" ]; then
+          echo "::set-output name=project-path-validity::true"
+        else
+          echo "::set-output name=project-path-validity::false"
+          echo "Error: Provided project-path '${{ inputs.project-path }}' is not valid or does not exist."
+          exit 1
+        fi
+      shell: bash
     - name: Cache dependencies
       if: inputs.caching == 'true' 
       id: cache
+      
       uses: actions/cache@v4
       with:
         path: ${{ inputs.project-path }}/node_modules
