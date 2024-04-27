@@ -19,7 +19,7 @@ jobs:
           caching: 'false'
           project-path: ${{env.PROJECT_DIR}}
       - name: Output project path
-        run: echo "Project path => ${{steps.cached-deps.outputs.project-path-check}}"
+        run: echo "Project path => ${{steps.cached-deps.outputs.project-path}}"
       - name: Lint code
         run: npm run lint
         working-directory: ${{ env.PROJECT_DIR }}
