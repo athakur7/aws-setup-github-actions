@@ -9,22 +9,18 @@ env:
   LIGHTNING_USER: ${{ secrets.LIGHTNING_USER }}
   LIGHTNING_TEAMSPACE: ${{ secrets.LIGHTNING_TEAMSPACE }}
   LIGHTNING_STUDIO_NAME: ${{ secrets.LIGHTNING_STUDIO_NAME }}
-
 jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-      
+        uses: actions/checkout@v4      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
-      
+          python-version: '3.10'      
       - name: Install dependencies
         run: |
-          pip install lightning-sdk
-      
+          pip install lightning-sdk      
       - name: Run python script
         run: python lightning_studio_active.py
