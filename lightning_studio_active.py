@@ -12,7 +12,7 @@ teamspace = os.environ['LIGHTNING_TEAMSPACE']
 user = os.environ['LIGHTNING_USER']
 
 # Create a new Studio instance with secrets
-s = Studio(name=name, teamspace=teamspace, user=user, create_ok=True)
+s = Studio(name=studio_name, teamspace=teamspace, user=user, create_ok=True)
 # before we call start, the Studio exists but isn't running
 s.start()
 output1 = s.run("ls")
