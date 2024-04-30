@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt update && sudo apt upgrade -y
-echo "APT Updated."
+echo "**************** APT Updated ****************"
 # Check if Docker is installed
 if ! [ -x "$(command -v docker)" ]; then
   echo "Docker is not installed. Please install Docker first."
@@ -12,7 +12,7 @@ echo "Installing Kind..."
 [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
-echo "Kind installation complete."
+echo "**************** Kind installation complete ****************"
 
 # Install Kubectl
 sudo apt-get update
