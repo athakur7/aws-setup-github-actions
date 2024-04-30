@@ -33,6 +33,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install -r requirements.txt      
+          pip install lightning-sdk      
       - name: Run python script
         run: python lightning_studio_active.py
