@@ -15,23 +15,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Cache python virtual env
-        uses: actions/cache@v4
-        with:
-          path: venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements.txt') }}
+      # - name: Cache python virtual env
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: venv
+      #     key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements.txt') }}
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Set up virtual environment & install dependecies
         run: |
-          python -m venv venv
-          source venv/bin/activate
+          # python -m venv venv
+          # source venv/bin/activate
           # pip install --upgrade pip
           pip install lightning-sdk
-          echo "LIGHTNING_USER_ID: $LIGHTNING_USER_ID"
-          echo "LIGHTNING_API_KEY: $LIGHTNING_API_KEY"
       # - name: Install dependencies
       #   run: |
       #     pip install --upgrade pip
