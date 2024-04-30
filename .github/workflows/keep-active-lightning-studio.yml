@@ -7,8 +7,8 @@ env:
   LIGHTNING_USER_ID: ${{ secrets.LIGHTNING_USER_ID }}
   LIGHTNING_API_KEY: ${{ secrets.LIGHTNING_API_KEY }}
   LIGHTNING_USER: ${{ secrets.LIGHTNING_USER }}
-  LIGHTNING_TEAMSPACE: ${{ secrets.LIGHTNING_TEAMSPACE }}
-  LIGHTNING_STUDIO_NAME: ${{ secrets.LIGHTNING_STUDIO_NAME }}
+  LIGHTNING_TEAMSPACE: Vision
+  LIGHTNING_STUDIO_NAME: kind-kubernetes-studio
 jobs:
   run-script:
     runs-on: ubuntu-latest
