@@ -14,13 +14,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4      
+        uses: actions/checkout@v4
+      - name: Cache Python dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'      
+          python-version: '3.10'
+      - name: Set up virtual environment & activate
+        run: |
+          python -m venv venv
+          source venv/bin/activate
       - name: Install dependencies
         run: |
-          pip install lightning-sdk      
+          pip install --upgrade pip
+          pip install -r requirements.txt      
       - name: Run python script
         run: python lightning_studio_active.py
