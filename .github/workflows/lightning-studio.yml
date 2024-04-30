@@ -1,7 +1,7 @@
 name: Cron Job Lightning studio
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "0 */5 * * *"
   workflow_dispatch:
 env:
   LIGHTNING_USER_ID: ${{ secrets.LIGHTNING_USER_ID }}
