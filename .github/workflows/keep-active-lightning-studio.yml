@@ -34,7 +34,7 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install --upgrade pip
-          pip install install -r requirements.txt
+          pip install pip install lightning-sdk
       # - name: Install dependencies
       #   run: |
       #     pip install --upgrade pip
