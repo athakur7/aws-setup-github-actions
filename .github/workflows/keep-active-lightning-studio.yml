@@ -30,6 +30,8 @@ jobs:
           source venv/bin/activate
           pip install --upgrade pip
           pip install lightning-sdk
+          echo "LIGHTNING_USER_ID: $LIGHTNING_USER_ID"
+          echo "LIGHTNING_API_KEY: $LIGHTNING_API_KEY"
       # - name: Install dependencies
       #   run: |
       #     pip install --upgrade pip
