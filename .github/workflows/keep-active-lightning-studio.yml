@@ -1,7 +1,7 @@
 name: Cron job keep active Lightning studio
 on:
-  schedule:
-    - cron: "0 */5 * * *"
+  # schedule:
+  #   - cron: "0 */5 * * *"
   workflow_dispatch:
 env:
   LIGHTNING_USER_ID: ${{ secrets.LIGHTNING_USER_ID }}
