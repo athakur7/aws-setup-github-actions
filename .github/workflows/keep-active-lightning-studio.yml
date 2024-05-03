@@ -1,7 +1,7 @@
 name: Cron job keep active Lightning studio
 on:
-  # schedule:
-  #   - cron: "0 */5 * * *"
+  schedule:
+    - cron: "0 */5 * * *"
   workflow_dispatch:
 env:
   LIGHTNING_USER_ID: ${{ secrets.LIGHTNING_USER_ID }}
@@ -25,7 +25,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       
-      - name: List pip packagesss
+      - name: List pip packages
         run: echo "Cache Hit Status--> ${{ steps.cache-python.outputs.cache-hit }}"; pip list packages
 
       - name: Set up Python
@@ -39,5 +39,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
    
-      - name: Run python script
+      - name: Run Python script
         run: python lightning_studio_active.py
